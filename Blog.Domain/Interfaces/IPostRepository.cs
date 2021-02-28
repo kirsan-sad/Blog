@@ -7,6 +7,6 @@ namespace Blog.Domain.Interfaces
 {
     public interface IPostRepository : IRepository<Post>
     {
-        public ICollection<Post> GetAllPostByCategory(Category category);
+        public ICollection<Post> GetAllPostByCategory(string category);
     }
 }
