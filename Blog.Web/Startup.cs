@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Blog.Infrastructure;
+using Blog.Domain.Interfaces;
+using Blog.Infrastructure.Repositorys;
+using Blog.Infrastructure.Repository;
 
 namespace Blog.Web
 {
@@ -26,6 +29,8 @@ namespace Blog.Web
         {
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddTransient<ICategoryRepository, EfCategoryRepository>();
+            services.AddTransient<IPostRepository, EfPostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

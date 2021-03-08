@@ -11,7 +11,8 @@ namespace Blog.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<Entity.Category, Domain.Models.Category>();
+            CreateMap<Entity.Category, Domain.Models.Category>().ReverseMap();
+            CreateMap<Entity.Category, Domain.Models.Post>();
         }   
     }
 }

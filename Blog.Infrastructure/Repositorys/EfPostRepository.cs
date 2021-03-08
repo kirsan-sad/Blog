@@ -18,14 +18,15 @@ namespace Blog.Infrastructure.Repository
         }
         public ICollection<Post> GetAllPostByCategory(string category)
         {
-            IQueryable<Entity.Post> allPosts;
+            ICollection<Post> result;
 
             using (var context = new BlogContext())
             {
-               allPosts = context.Categories.Where(n => n.Name == category).SelectMany(x => x.Posts);
-            }
+                var allPosts = context.Categories.Where(n => n.Name == category).SelectMany(x => x.Posts);
 
-            var result = _mapper.ProjectTo<Post>(allPosts).ToList();
+                result = _mapper.ProjectTo<Post>(allPosts).ToList();
+
+            }
 
             return result;
             
